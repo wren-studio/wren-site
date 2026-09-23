@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["679Q5AKSKT.app.joinwren.mobile", "679Q5AKSKT.app.joinwren.mobile.dev"],
+        "components": [{ "/": "/billing/*" }]
+      }
+    ]
+  }
+}
