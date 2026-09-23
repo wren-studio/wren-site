@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <title>You're in — Wren</title>
+    <title>Back to Wren — Wren</title>
     <style>
       * {
         margin: 0;
@@ -81,8 +81,8 @@
   <body>
     <div class="wrap">
       <div class="brand"><a href="/">Wren</a></div>
-      <h1 id="title">You're in.</h1>
-      <p id="body">Your membership is active. Open Wren to finish setting up.</p>
+      <h1 id="title">Back to Wren.</h1>
+      <p id="body">Open Wren to pick up where you left off.</p>
       <a id="open" class="button" href="wren://billing/return">Open Wren</a>
       <p class="small">Or just switch back to the app.</p>
     </div>
@@ -98,9 +98,11 @@
         var link = app + '://billing/return';
         var hasSession = /^cs_[A-Za-z0-9_]+$/.test(session);
         if (hasSession) link += '?session_id=' + session;
-        if (!hasSession) {
-          document.getElementById('title').textContent = 'Back to Wren.';
-          document.getElementById('body').textContent = 'Open Wren to pick up where you left off.';
+        if (hasSession) {
+          document.title = "You're in — Wren";
+          document.getElementById('title').textContent = "You're in.";
+          document.getElementById('body').textContent =
+            'Your membership is active. Open Wren to finish setting up.';
         }
         document.getElementById('open').setAttribute('href', link);
         window.location.href = link;
