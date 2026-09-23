@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>No charge — Wren</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+        background: #fff;
+        color: #1d1d1f;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .wrap {
+        max-width: 560px;
+        margin: 0 auto;
+        padding: 96px 24px 48px;
+        text-align: center;
+        flex: 1;
+      }
+      .brand {
+        margin-bottom: 48px;
+      }
+      .brand a {
+        font-size: 22px;
+        font-weight: 800;
+        color: #1d1d1f;
+        text-decoration: none;
+        letter-spacing: -0.3px;
+      }
+      h1 {
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 14px;
+      }
+      p {
+        font-size: 16px;
+        color: #424245;
+        margin-bottom: 12px;
+      }
+      .button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 14px 28px;
+        border-radius: 12px;
+        background: #1d1d1f;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .small {
+        font-size: 13.5px;
+        color: #86868b;
+        margin-top: 28px;
+      }
+      .footer {
+        border-top: 1px solid #e5e5ea;
+        padding: 28px 24px;
+        text-align: center;
+      }
+      .footer p {
+        font-size: 13px;
+        color: #86868b;
+        margin-bottom: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="brand"><a href="/">Wren</a></div>
+      <h1>No charge was made.</h1>
+      <p>You can pick a plan any time from the app.</p>
+      <a id="open" class="button" href="wren://billing/cancel">Open Wren</a>
+      <p class="small">Or just switch back to the app.</p>
+    </div>
+    <div class="footer">
+      <p>Wren Studio Inc.</p>
+      <p>© 2026 Wren Studio Inc. All rights reserved.</p>
+    </div>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var app = params.get('app') === 'wren-dev' ? 'wren-dev' : 'wren';
+        var link = app + '://billing/cancel';
+        document.getElementById('open').setAttribute('href', link);
+        window.location.href = link;
+      })();
+    </script>
+  </body>
+</html>
