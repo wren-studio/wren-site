@@ -81,8 +81,8 @@
   <body>
     <div class="wrap">
       <div class="brand"><a href="/">Wren</a></div>
-      <h1>You're in.</h1>
-      <p>Your membership is active. Open Wren to finish setting up.</p>
+      <h1 id="title">You're in.</h1>
+      <p id="body">Your membership is active. Open Wren to finish setting up.</p>
       <a id="open" class="button" href="wren://billing/return">Open Wren</a>
       <p class="small">Or just switch back to the app.</p>
     </div>
@@ -96,7 +96,12 @@
         var app = params.get('app') === 'wren-dev' ? 'wren-dev' : 'wren';
         var session = params.get('session_id') || '';
         var link = app + '://billing/return';
-        if (/^cs_[A-Za-z0-9_]+$/.test(session)) link += '?session_id=' + session;
+        var hasSession = /^cs_[A-Za-z0-9_]+$/.test(session);
+        if (hasSession) link += '?session_id=' + session;
+        if (!hasSession) {
+          document.getElementById('title').textContent = 'Back to Wren.';
+          document.getElementById('body').textContent = 'Open Wren to pick up where you left off.';
+        }
         document.getElementById('open').setAttribute('href', link);
         window.location.href = link;
       })();
