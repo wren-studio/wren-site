@@ -1,0 +1,14 @@
+# Supabase CLI scratch
+supabase/.temp
+supabase/.branches
+
+# Vercel
+.vercel
+
+# Env
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
